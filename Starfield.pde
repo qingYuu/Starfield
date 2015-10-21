@@ -1,7 +1,10 @@
 Particle[]slaine;
+PImage ocean;
 void setup()
-{
+{   
+	
 	size(300,300);
+	ocean = loadImage("deepsea.jpg");
 	slaine= new Particle[100];
     for(int i=0;i<slaine.length;i++)
     {
@@ -18,11 +21,14 @@ void setup()
     	slaine[i]=new NormalParticle();
     	}	
     }
-  
-}
+}  
 void draw()
 {  
-	background(0, 0, 0);
+	//background(0, 0, 0);
+	
+	
+    image(ocean,0,0,300,300);
+
 	for(int i=0;i<slaine.length;i++)
    {
       slaine[i].move();
@@ -35,7 +41,7 @@ class NormalParticle implements Particle
 	double x, y, angle, speed;
 	int paint;
     PImage fire;
-    PImage fire2;
+    
 	NormalParticle()
 	{ 
 	  x=150;
@@ -44,7 +50,7 @@ class NormalParticle implements Particle
 	  speed=(Math.random()*2);
 	  paint=color(245,24,12);
       fire=loadImage("bubble-1.png");
-      fire2=loadImage("perfect_bubble.png");
+      
 	 
 	}
 	public void move()
@@ -72,7 +78,7 @@ class NormalParticle implements Particle
 	  noStroke();
       fill(paint);
       image(fire,(float)x,(float)y,10,10);
-      image(fire2,(float)x-100,(float)y,10,10);
+      
      
 	//background(0, 0, 0);
 	}   
@@ -120,18 +126,13 @@ class OddballParticle implements Particle
 }
 class JumboParticle extends NormalParticle//uses inheritance
 {
-	PImage aldnoah2;
-	PImage aldnoah;
+	PImage fire2;
 	JumboParticle()
 	{
-    aldnoah2=loadImage("asteroid2.png");
-    aldnoah=loadImage("asteroid.png");
+        fire2=loadImage("perfect_bubble.png");
 	}
 	public void show()
 	{
-		fill(255,255,255);
-		image(aldnoah2,(float)x,(float)y,7,7);
-		image(aldnoah,(float)x,(float)y,5,5);
-
+		image(fire2,(float)x,(float)y,10,10);
 	}
 }
